@@ -13,9 +13,7 @@ role = "Researcher in the Department of Management, Economics and Industrial Eng
 
 # Organizations/Affiliations
 #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
-# https://www.som.polimi.it/en/research/research-lines/climate-economics-and-modeling/
-# https://www.eiee.org/
-organizations = [ { name = "Politecnico di Milano, Italy", url = "" }, { name = "RFF-CMCC European Institute on Economics and the Environment", url = "" } ]
+organizations = [ { name = "Politecnico di Milano, Italy", url = "https://www.som.polimi.it/en/research/research-lines/climate-economics-and-modeling/" }, { name = "RFF-CMCC European Institute on Economics and the Environment", url = "https://www.eiee.org/" } ]
 
 # Short bio (displayed in user profile at end of posts)
 bio = "I explore robust policies for climate change risk management."
