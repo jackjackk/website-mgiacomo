@@ -47,10 +47,70 @@
         font-weight: bold;
         color: #069;
     }
+    /*#ackdiv {*/
+    /*    display: none;*/
+    /*}*/
+
+    /*#acklink:hover + #ackdiv {*/
+    /*    display: block;*/
+    /*}*/
+    #ackspan{
+        background: none repeat scroll 0 0 #F8F8F8;
+        border: 2px solid #DFDFDF;
+        color: #717171;
+        /*font-size: 13px;*/
+        /*height: 30px;*/
+        margin: 0 auto;
+        position: relative;
+        text-align: right;
+        top: 0px;
+        right: 10px;
+        width: auto;
+        float: right;
+        display:none;
+        padding:0 20px;
+        z-index: 100;
+
+    }
+    /*#ackspan:after{*/
+    /*    content:'';*/
+    /*    position:absolute;*/
+    /*    bottom:-10px;*/
+    /*    width:10px;*/
+    /*    height:10px;*/
+    /*    border-bottom:5px solid #dfdfdf;*/
+    /*    border-right:5px solid #dfdfdf;*/
+    /*    background:#f8f8f8;*/
+    /*    left:50%;*/
+    /*    margin-left:-5px;*/
+    /*    -moz-transform:rotate(45deg);*/
+    /*    -webkit-transform:rotate(45deg);*/
+    /*    transform:rotate(45deg);*/
+    /*}*/
+    #ackp{
+        margin:100px;
+        float:left;
+        position:relative;
+        cursor:pointer;
+    }
+    #acklink {
+        text-align: right;
+        float: right;
+        margin-right: 10px;
+    }
+    #acklink:hover + #ackspan{
+        display:block;
+    }
 </style>
 <script src="lib/d3.v5.min.js"></script>
 <script src="lib/parcoords.standalone.js"></script>
 <div id="example" class="parcoords" style="height:240px;"></div>
+<div id="ack">
+<!--    <a id="acklink" href="https://zenodo.org/record/3363345">Data source</a>-->
+<!--    <div id="ackdiv">Huppmann, Daniel, Kriegler, Elmar, Krey, Volker, Riahi, Keywan, Rogelj, Joeri, Calvin, Katherine, … Zhang, Runsen. (2019). IAMC 1.5°C Scenario Explorer and Data hosted by IIASA (Version release 2.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.3363345</div>-->
+        <a id="acklink" href="https://zenodo.org/record/3363345" target="_blank">Data source</a>
+        <span id="ackspan">Huppmann, Daniel et al., 2019: IAMC 1.5&#176;C Scenario Explorer and Data hosted by IIASA. doi:10.5281/zenodo.3363345.</span>
+</div>
 <div id="grid"></div>
 <div id="pager"></div>
 <script id="brushing">
@@ -64,7 +124,7 @@
         .mode("queue") // progressive rendering
         .alpha(0.6)
         .color(color)
-        .height(d3.max([document.body.clientHeight-326, 240]))
+        .height(d3.max([document.body.clientHeight-400, 240]))
         .margin({
             top: 36,
             left: 36,
@@ -80,11 +140,20 @@
         parcoords
             .data(data)
 .composite('darker')
-            .hideAxis(["ModelScenario", "id"])
-        .render()
+            .hideAxis(["ModelScenario", "id"]);
+       //
+       // parcoords.dimensions()[]
+       //      .yscale
+       //      .domain(
+       //          parcoords.dimensions()["Final energy intensity in 2050 (MJ/$)"].yscale.domain().reverse()
+       //      );
+
+    parcoords.render()
 .shadows()
             .reorderable()
-            .brushMode("1D-axes-multi");
+        // .flipAxes(["Final energy intensity in 2050 (MJ/$)"])
+    .brushMode("1D-axes-multi");
+
 
         // setting up grid
         var column_keys = d3.keys(data[0]);
